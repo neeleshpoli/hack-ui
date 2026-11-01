@@ -1,0 +1,14 @@
+/* packages/ui/src/style.css */
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--ui-primary, #2563eb);
+  --color-primary-foreground: var(--ui-primary-fg, #ffffff);
+  --color-muted: var(--ui-muted, #64748b);
+  --color-muted-foreground: var(--ui-muted-fg, #94a3b8);
+  --color-background: var(--ui-bg, #ffffff);
+  --color-foreground: var(--ui-fg, #09090b);
+
+  --font-family-sans: var(--ui-font-sans, ui-sans-serif, system-ui, sans-serif);
+  --radius-base: var(--ui-radius, 0.5rem);
+}
