@@ -5,7 +5,10 @@
   "scripts": {
     "build": "pnpm -r --filter \"@hack-ui/*\" build",
     "dev": "pnpm -r --parallel dev",
-    "clean": "pnpm -r exec rm -rf dist node_modules"
+    "clean": "pnpm -r exec rm -rf dist node_modules",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
@@ -15,11 +18,15 @@
     "@vitejs/plugin-react": "^4.3.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "eslint": "^10.14.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.9.10",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.7.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.6.0",
+    "typescript-eslint": "^8.72.1",
     "vite": "^6.0.0",
     "vite-plugin-dts": "^4.3.0"
   }
