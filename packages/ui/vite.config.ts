@@ -19,10 +19,11 @@ export default defineConfig({
       formats: ['es', 'cjs'],
       fileName: (format) => `index.${format === 'es' ? 'js' : 'cjs'}`,
     },
-    cssCodeSplit: false, // Compiles all imported styles into a single dist/style.css
+    cssCodeSplit: false,
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
+        assetFileNames: 'style.[ext]',
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',

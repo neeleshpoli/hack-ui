@@ -1,76 +1,77 @@
-// typography.tsx
 import * as React from "react";
 import {
-  headingVariants,
-  type BaseHeadingProps,
-  type HeadingTag,
+  Variants,
+  type TypographyVariants,
+  type TypographyVariant,
 } from "./typography.variants";
 import { cn } from "../utils";
 
-function createHeadingComponent(
-  defaultTag: HeadingTag,
-  defaultClasses: string,
-  displayName: string,
-) {
-  function HeadingRender<E extends HeadingTag = typeof defaultTag>(
-    { as, color, className, children, ...restProps }: BaseHeadingProps<E>,
-    ref: React.Ref<any>,
-  ) {
-    const Component = as || defaultTag;
+export type TypographyElementProps<T extends React.ElementType> =
+  React.ComponentPropsWithoutRef<T> & TypographyVariants;
+
+function createSemanticComponent<
+  T extends keyof React.JSX.IntrinsicElements,
+  V extends TypographyVariant,
+>(tag: T, defaultVariant: V, displayName: string) {
+  type Element = React.ComponentRef<T>;
+  type Props = React.ComponentPropsWithoutRef<T> & TypographyVariants;
+
+  const Component = React.forwardRef<Element, Props>((props, ref) => {
+    const {
+      variant = defaultVariant,
+      color,
+      className,
+      ...restProps
+    } = props as Props;
+    const ComponentTag = tag as React.ElementType;
 
     return (
-      <Component
+      <ComponentTag
         ref={ref}
-        className={cn(headingVariants({ color }), defaultClasses, className)}
+        className={cn(
+          Variants({
+            variant: variant ?? defaultVariant,
+            color,
+          }),
+          className,
+        )}
         {...restProps}
-      >
-        {children}
-      </Component>
+      />
     );
-  }
+  });
 
-  const Comp = React.forwardRef(HeadingRender) as <
-    E extends HeadingTag = typeof defaultTag,
-  >(
-    props: BaseHeadingProps<E> & { ref?: React.Ref<any> },
-  ) => React.ReactElement | null;
-
-  (Comp as React.FC).displayName = displayName;
-  return Comp;
+  Component.displayName = displayName;
+  return Component;
 }
 
-export const H1 = createHeadingComponent(
-  "h1",
-  "text-4xl lg:text-5xl font-extrabold",
-  "H1",
-);
+export const H1 = createSemanticComponent("h1", "h1", "H1");
+export const H2 = createSemanticComponent("h2", "h2", "H2");
+export const H3 = createSemanticComponent("h3", "h3", "H3");
+export const H4 = createSemanticComponent("h4", "h4", "H4");
+export const H5 = createSemanticComponent("h5", "h5", "H5");
+export const H6 = createSemanticComponent("h6", "h6", "H6");
 
-export const H2 = createHeadingComponent(
-  "h2",
-  "text-3xl lg:text-4xl font-bold",
-  "H2",
+/** Paragraph tag */
+export const P = createSemanticComponent("p", "p", "P");
+export const Span = createSemanticComponent("span", "span", "Span");
+export const Small = createSemanticComponent("small", "small", "Small");
+export const Blockquote = createSemanticComponent(
+  "blockquote",
+  "blockquote",
+  "Blockquote",
 );
+export const Code = createSemanticComponent("code", "code", "Code");
 
-export const H3 = createHeadingComponent(
-  "h3",
-  "text-2xl lg:text-3xl font-semibold",
-  "H3",
-);
-
-export const H4 = createHeadingComponent(
-  "h4",
-  "text-xl lg:text-2xl font-semibold",
-  "H4",
-);
-
-export const H5 = createHeadingComponent(
-  "h5",
-  "text-lg lg:text-xl font-medium",
-  "H5",
-);
-
-export const H6 = createHeadingComponent(
-  "h6",
-  "text-base lg:text-lg font-medium",
-  "H6",
-);
+export type H1Props = TypographyElementProps<"h1">;
+export type H2Props = TypographyElementProps<"h2">;
+export type H3Props = TypographyElementProps<"h3">;
+export type H4Props = TypographyElementProps<"h4">;
+export type H5Props = TypographyElementProps<"h5">;
+export type H6Props = TypographyElementProps<"h6">;
+export type PProps = TypographyElementProps<"p">;
+export type ParagraphProps = PProps;
+export type TextProps = PProps;
+export type SpanProps = TypographyElementProps<"span">;
+export type SmallProps = TypographyElementProps<"small">;
+export type BlockquoteProps = TypographyElementProps<"blockquote">;
+export type CodeProps = TypographyElementProps<"code">;
