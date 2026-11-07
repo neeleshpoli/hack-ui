@@ -53,6 +53,8 @@ export const H6 = createSemanticComponent("h6", "h6", "H6");
 
 /** Paragraph tag */
 export const P = createSemanticComponent("p", "p", "P");
+export const Paragraph = P;
+export const Text = P;
 export const Span = createSemanticComponent("span", "span", "Span");
 export const Small = createSemanticComponent("small", "small", "Small");
 export const Blockquote = createSemanticComponent(
