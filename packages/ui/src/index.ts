@@ -36,3 +36,13 @@ export {
   type TypographyVariant,
   type TypographyColor,
 } from "./Typography/typography.variants";
+
+export { Button, type ButtonProps } from "./Buttons/Button";
+
+export {
+  Variants as buttonVariants,
+  type ButtonVariants,
+  type ButtonVariant,
+  type ButtonSize,
+  type ButtonShape,
+} from "./Buttons/buttons.variants";

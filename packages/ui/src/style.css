@@ -4,10 +4,23 @@
 @theme {
   --color-primary: var(--ui-primary, #2563eb);
   --color-primary-foreground: var(--ui-primary-fg, #ffffff);
-  --color-muted: var(--ui-muted, #64748b);
-  --color-muted-foreground: var(--ui-muted-fg, #94a3b8);
+  --color-secondary: var(--ui-secondary, #f1f5f9);
+  --color-secondary-foreground: var(--ui-secondary-fg, #0f172a);
+  --color-destructive: var(--ui-destructive, #ef4444);
+  --color-destructive-foreground: var(--ui-destructive-fg, #ffffff);
+  --color-success: var(--ui-success, #22c55e);
+  --color-success-foreground: var(--ui-success-fg, #ffffff);
+  --color-warning: var(--ui-warning, #f59e0b);
+  --color-warning-foreground: var(--ui-warning-fg, #ffffff);
+  --color-muted: var(--ui-muted, #f1f5f9);
+  --color-muted-foreground: var(--ui-muted-fg, #64748b);
+  --color-accent: var(--ui-accent, #f1f5f9);
+  --color-accent-foreground: var(--ui-accent-fg, #0f172a);
   --color-background: var(--ui-bg, #ffffff);
   --color-foreground: var(--ui-fg, #09090b);
+  --color-border: var(--ui-border, #e2e8f0);
+  --color-input: var(--ui-input, #e2e8f0);
+  --color-ring: var(--ui-ring, #2563eb);
 
   --font-family-sans: var(--ui-font-sans, ui-sans-serif, system-ui, sans-serif);
   --radius-base: var(--ui-radius, 0.5rem);
